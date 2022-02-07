@@ -29,12 +29,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <div class="log-w3">
 <div class="w3layouts-main">
-	<h2>ĐĂNG NHẬP</h2>
-		<form action="{{URL::to('/dashboard')}}" method="post">
+	<h2>ĐĂNG KÝ</h2>
+		<form action="{{URL::to('/signin_account')}}" method="post">
 			{{ csrf_field() }}
 			<input type="username" class="ggg" name="username" placeholder="USERNAME" required="">
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
-			<!--Thông bào khi đăng nhập sai-->
+			<!--Thông bào khi đăng ký thất bại-->
 			<?php
 				$message = Session::get('message');
 				if($message){
@@ -42,11 +42,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					Session::put('message',null);
 				}
 			?>
-
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In" name="login">
 		</form>
-        <div style="text-align: center"><a href="{{URL::to('/signin')}}">Đăng ký tài khoản</a></div>
 </div>
 </div>
 <script src="{{asset('public/backend/js/bootstrap.js')}}"></script>

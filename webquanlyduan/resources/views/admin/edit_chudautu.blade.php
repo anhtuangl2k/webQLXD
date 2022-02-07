@@ -5,7 +5,7 @@
             <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Thêm chủ đầu tư
+                            Chỉnh sửa chủ đầu tư
                         </header>
 
                         <div class="panel-body">

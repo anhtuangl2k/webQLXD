@@ -20,18 +20,39 @@ class AdminController extends Controller
     }
 
     public function dashboard(Request $request){
-        $username = $request->admin_username;
-        $password = ($request->admin_password);
+        $username = $request->username;
+        $password = md5($request->password);
 
-        $result = DB::table('taikhoan')->where('admin_username',$username)->where('admin_password', $password)->first();
+        $result = DB::table('taikhoan')->where('username',$username)->where('password', $password)->first();
 
         if($result){
-            Session::put('name',$result->admin_username);
+            Session::put('name',$result->username);
             return view('/admin/dashboard');
         }
         else{
             Session::put('message','Bạn đã nhập sai tài khoản hoặc mật khẩu! Vui lòng nhập lại');
             return Redirect::to('/login');
         }
+    }
+
+    public function loadViewSignin(){
+        return view('admin_signin');
+    }
+
+    public function signin(Request $request){
+        $data = array();
+        $data['username'] = $request->username;
+        $data['password'] = md5($request->password);
+        $data['trangThai'] = 'active';
+        $data['ngayTao'] = date('d/m/y');
+
+        $result = DB::table('taikhoan')->insert($data);
+        if($result){
+            return Redirect::to('/login');
+        }
+            else{
+                Session::put('message','Bạn đã nhập sai tài khoản hoặc mật khẩu! Vui lòng nhập lại');
+                return Redirect::to('/login');
+            }
     }
 }

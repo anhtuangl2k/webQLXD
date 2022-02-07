@@ -27,21 +27,26 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên chủ đầu tư</th>
-            <th style="width:30px;"></th>
+            <th>Tên nhà thầu</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
-        @foreach($chudautu as $key => $c)
+        @foreach($nhathau as $key => $c)
           {{ csrf_field() }}
             <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$c->tenCDT}}</td>
+            <td>{{$c->tenNT}}</td>
+            <td>{{$c->diaChi}}</td>
+            <td>{{$c->sdt}}</td>
+            <td>{{$c->email}}</td>
             <td>
-              <a href="{{URL::to('/edit-chudautu/'.$c->idCDT)}}" class="active" ui-toggle-class="">
+              <a href="{{URL::to('/edit-nhathau/'.$c->idNhaThau)}}" class="active" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i>
               </a>
-              <a href="{{URL::to('/delete-chudautu/'.$c->idCDT)}}" class="active" onclick="return confirm('Bạn có chắc sẽ xóa bản tin này ?')" ui-toggle-class="">
+              <a href="{{URL::to('/delete-nhathau/'.$c->idNhaThau)}}" class="active" onclick="return confirm('Bạn có chắc sẽ xóa bản tin này ?')" ui-toggle-class="">
                 <i class="fa fa-times text-danger text-active"></i>
               </a>
             </td>
