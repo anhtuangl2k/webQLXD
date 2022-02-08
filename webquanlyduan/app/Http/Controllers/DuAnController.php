@@ -62,7 +62,7 @@ class DuAnController extends Controller
         $data['gtriDA'] = $request->gtriDA;
         $data['ngayBatDau'] = $request->ngayBatDau;
         $data['ngayKetThuc'] = $request->ngayKetThuc;
-        $data['tinhtrang'] = $request->tinhtrang;
+        $data['tinhTrang'] = $request->tinhTrang;
         // THEM KHOA NGOAI
         $data['idNT'] = $request->idNT;
         $data['idCDT'] = $request->idCDT;

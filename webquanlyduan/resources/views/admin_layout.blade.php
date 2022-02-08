@@ -104,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-user-plus"></i>
                         <span>Nhà thầu</span>
                     </a>
                     <ul class="sub">
@@ -114,12 +114,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-info"></i>
                         <span>Dự án</span>
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/add-duan')}}">Thêm dự án</a></li>
 						<li><a href="{{URL::to('/list-duan')}}">Danh sách dự án</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-file-text-o"></i>
+                        <span>Khoản chi công trường</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-kcct')}}">Tạo khoản chi công trường</a></li>
+						<li><a href="{{URL::to('/list-kcct')}}">Danh sách các khoản chi của dự án</a></li>
                     </ul>
                 </li>
             </ul>

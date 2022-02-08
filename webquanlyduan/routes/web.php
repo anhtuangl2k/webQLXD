@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChuDauTuController;
 use App\Http\Controllers\NhaThauController;
+use App\Http\Controllers\KCCTController;
 use App\Http\Controllers\DuAnController;
 use App\Http\Controllers\AdminController;
 
@@ -63,4 +64,16 @@ Route::get('/edit-duan/{idDuAn}', [DuAnController::class, 'editDuAn']);
 Route::post('/update-duan/{idDuAn}', [DuAnController::class, 'updateDuAn']);
 
 Route::get('/delete-duan/{idDuAn}', [DuAnController::class, 'deleteDuAn']);
+
+// KHOAN CHI CONG TRUONG
+Route::get('/add-kcct', [KCCTController::class, 'loadViewKCCT']);
+Route::post('/save-kcct', [KCCTController::class, 'addKCCT']);
+
+Route::get('/list-kcct', [KCCTController::class, 'getListKCCT']);
+
+Route::get('/edit-kcct/{id}', [KCCTController::class, 'editKCCT']);
+Route::post('/update-kcct/{id}', [KCCTController::class, 'updateKCCT']);
+
+Route::get('/delete-kcct/{id}', [KCCTController::class, 'deleteKCCT']);
+
 
