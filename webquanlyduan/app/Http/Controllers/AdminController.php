@@ -27,7 +27,8 @@ class AdminController extends Controller
 
         if($result){
             Session::put('name',$result->username);
-            return view('/admin/dashboard');
+            Session::put('idTK',$result->idTaiKhoan);
+            return view('/admin.statistic');
         }
         else{
             Session::put('message','Bạn đã nhập sai tài khoản hoặc mật khẩu! Vui lòng nhập lại');
@@ -54,5 +55,8 @@ class AdminController extends Controller
                 Session::put('message','Bạn đã nhập sai tài khoản hoặc mật khẩu! Vui lòng nhập lại');
                 return Redirect::to('/login');
             }
+    }
+    public function statistic(){
+        return view('admin.statistic');
     }
 }

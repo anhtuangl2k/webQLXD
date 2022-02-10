@@ -75,4 +75,21 @@ class DuAnController extends Controller
         $delete_duan = DB::table('duan')->where('idDA',$idDuAn)->delete();
         return Redirect::to('/list-duan');
     }
+    public function addQuyen($idDA){
+        $all_taikhoan = DB::table('taikhoan')->get();
+        $duan = DB::table('duan')->where('idDA',$idDA)->get();
+
+        return view('admin/add_quyenduan')->with('duan' ,$duan)->with('taikhoan',$all_taikhoan);
+    }
+
+    public function saveQuyen(Request $request, $idDA){
+        $data = array();
+
+        $data['idTK'] = $request->idTK;
+        $data['idDA'] = $request->idDA;
+
+        DB::table('taikhoan_duan')->insert($data);
+
+        return Redirect::to('/list-duan');
+    }
 }

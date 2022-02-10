@@ -36,6 +36,7 @@
             <th>Tình trạng</th>
             <th>Nhà thầu</th>
             <th>Chủ đầu tư</th>
+            <th>Phân quyền dự án</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +65,7 @@
             <td>{{$x->tenNT}}</td>
             <?php } ?>
             @endforeach
+            <td><a href="{{URL::to('/allocate-duan/'.$c->idDA)}}">Thêm quyền</a></td>
             <td>
               <a href="{{URL::to('/edit-duan/'.$c->idDA)}}" class="active" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i>

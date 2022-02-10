@@ -4,7 +4,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Dự án
+      Vật liệu
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-4">
@@ -27,53 +27,39 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Nội dung khoản chi</th>
-            <th>Tổng tiền chi</th>
-            <th>Ngày duyệt</th>
-            <th>Ngày tạo</th>
-            <th>Trạng thái</th>
-            <th>Dự án</th>
-            <th>Thêm vật liệu</th>
+            <th>Tên vật liệu</th>
+            <th>Đơn vị</th>
+            <th style="width:30px;"></th>
           </tr>
         </thead>
-        <tbody>
-        @foreach($kcct as $key => $c)
+        <tbody> 
+        @foreach($vatlieu as $key => $vl)
           {{ csrf_field() }}
             <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$c->noiDung}}</td>
-            <td>{{$c->tongTien}}</td>
-            <td>{{$c->ngayDuyet}}</td>
-            <td>{{$c->ngayTao}}</td>
-            <td>{{$c->trangThai}}</td>
-            @foreach($duan as $key => $t)
-            <?php
-                if($c->idDA === $t->idDA){
-            ?>
-            <td>{{$t->tenDA}}</td>
-            <?php } ?>
-            @endforeach
-            <td><a href="{{URL::to('/add-vlTokcct/'.$c->id)}}">Thêm</a></td>
+            <td>{{$vl->tenVL}}</td>
+            <td>{{$vl->donVi}}</td>
             <td>
-              <a href="{{URL::to('/edit-kcct/'.$c->id)}}" class="active" ui-toggle-class="">
+              <a href="{{URL::to('/edit-vatlieu/'.$vl->idVatLieu)}}" class="active" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i>
               </a>
-              <a href="{{URL::to('/delete-kcct/'.$c->id)}}" class="active" onclick="return confirm('Bạn có chắc sẽ xóa bản tin này ?')" ui-toggle-class="">
+              <a href="{{URL::to('/delete-vatlieu/'.$vl->idVatLieu)}}" class="active" onclick="return confirm('Bạn có chắc sẽ xóa bản tin này ?')" ui-toggle-class="">
                 <i class="fa fa-times text-danger text-active"></i>
               </a>
             </td>
             </tr>
         @endforeach
+         
         </tbody>
       </table>
     </div>
     <footer class="panel-footer">
       <div class="row">
-
+        
         <div class="col-sm-5 text-center">
           <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
-        <div class="col-sm-7 text-right text-center-xs">
+        <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
             <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>

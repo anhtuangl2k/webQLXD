@@ -27,25 +27,18 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Nội dung khoản chi</th>
-            <th>Tổng tiền chi</th>
-            <th>Ngày duyệt</th>
-            <th>Ngày tạo</th>
-            <th>Trạng thái</th>
+            <th>Tên hợp đồng</th>
+            <th>Nội dung</th>
             <th>Dự án</th>
-            <th>Thêm vật liệu</th>
           </tr>
         </thead>
         <tbody>
-        @foreach($kcct as $key => $c)
+        @foreach($hopdong as $key => $c)
           {{ csrf_field() }}
             <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <td>{{$c->tenHD}}</td>
             <td>{{$c->noiDung}}</td>
-            <td>{{$c->tongTien}}</td>
-            <td>{{$c->ngayDuyet}}</td>
-            <td>{{$c->ngayTao}}</td>
-            <td>{{$c->trangThai}}</td>
             @foreach($duan as $key => $t)
             <?php
                 if($c->idDA === $t->idDA){
@@ -53,12 +46,11 @@
             <td>{{$t->tenDA}}</td>
             <?php } ?>
             @endforeach
-            <td><a href="{{URL::to('/add-vlTokcct/'.$c->id)}}">Thêm</a></td>
             <td>
-              <a href="{{URL::to('/edit-kcct/'.$c->id)}}" class="active" ui-toggle-class="">
+              <a href="{{URL::to('/edit-hopdong/'.$c->idHopDong)}}" class="active" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i>
               </a>
-              <a href="{{URL::to('/delete-kcct/'.$c->id)}}" class="active" onclick="return confirm('Bạn có chắc sẽ xóa bản tin này ?')" ui-toggle-class="">
+              <a href="{{URL::to('/delete-hopdong/'.$c->idHopDong)}}" class="active" onclick="return confirm('Bạn có chắc sẽ xóa bản tin này ?')" ui-toggle-class="">
                 <i class="fa fa-times text-danger text-active"></i>
               </a>
             </td>

@@ -68,4 +68,34 @@ class KCCTController extends Controller
         $delete_KCCT = DB::table('khoanchicongtruong')->where('id',$idKCCT)->delete();
         return Redirect::to('/list-kcct');
     }
+
+    public function addVatLieus($idCT){
+        $all_vatlieu = DB::table('vatlieu')->get();
+        $kcct = DB::table('khoanchicongtruong')->where('id',$idCT)->get();
+
+        return view('admin/add_vltokcct')->with('kcct' ,$kcct)->with('vatlieu',$all_vatlieu);
+    }
+
+    public function saveVatLieus(Request $request, $idCT){
+        $data = array();
+
+        $result = DB::table('khoanchi_vatlieu')->where('idCT',$idCT)->where('idVL', $request->idVL)->first();
+
+        if($result){
+            $data['idCT'] = $result->idCT;
+            $data['idVL'] = $result->idVL;
+            $data['soLuong'] = $result->soLuong + $request->soLuong;
+
+            DB::table('khoanchi_vatlieu')->where('id', $result->id)->update($data);
+        }
+        else{
+            $data['idCT'] = $idCT;
+            $data['idVL'] = $request->idVL;
+            $data['soLuong'] = $request->soLuong;
+
+            DB::table('khoanchi_vatlieu')->insert($data);
+        }
+
+        return Redirect::to('/list-kcct');
+    }
 }

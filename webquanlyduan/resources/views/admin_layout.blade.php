@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="{{URL::to('/')}}" class="logo">
+    <a href="{{URL::to('/main')}}" class="logo">
         ADMIN
     </a>
     <div class="sidebar-toggle-box">
@@ -59,16 +59,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <span class="username">
 				<?php
 					$name = Session::get('name');
-					if($name){
-						echo $name;
-					}
+				    if($name) echo $name;
 				?>
 				</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                <li><a href="{{URL::to('/admin-profile')}}"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="logout"><i class="fa fa-key"></i> Đăng xuất</a></li>
             </ul>
         </li>
@@ -86,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="{{URL::to('/dashboard')}}">
+                    <a class="active" href="{{URL::to('/main')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Tổng quan</span>
                     </a>
@@ -130,6 +127,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="sub">
 						<li><a href="{{URL::to('/add-kcct')}}">Tạo khoản chi công trường</a></li>
 						<li><a href="{{URL::to('/list-kcct')}}">Danh sách các khoản chi của dự án</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                    <span>Vật liệu</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-vatlieu')}}">Thêm vật liệu</a></li>
+						<li><a href="{{URL::to('/list-vatlieu')}}">Danh sách các vật liệu</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <span>Hợp đồng</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-hopdong')}}">Tạo hợp đồng cho dự án</a></li>
+						<li><a href="{{URL::to('/list-hopdong')}}">Danh sách các hợp động</a></li>
                     </ul>
                 </li>
             </ul>
