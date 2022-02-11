@@ -11,10 +11,12 @@
       </div>
       <div class="col-sm-3">
         <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
+          <form role="form" method="get"  action="{{URL::to('/list-vatlieu/')}}">
+          <input type="text" name="kw" class="input-sm form-control" placeholder="Search">
           <span class="input-group-btn">
             <button class="btn btn-sm btn-default" type="button">Go!</button>
           </span>
+          </form>
         </div>
       </div>
     </div>
@@ -32,7 +34,7 @@
             <th style="width:30px;"></th>
           </tr>
         </thead>
-        <tbody> 
+        <tbody>
         @foreach($vatlieu as $key => $vl)
           {{ csrf_field() }}
             <tr>
@@ -49,26 +51,19 @@
             </td>
             </tr>
         @endforeach
-         
+
         </tbody>
       </table>
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
+
         <div class="col-sm-5 text-center">
           <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
-        <div class="col-sm-7 text-right text-center-xs">                
-          <ul class="pagination pagination-sm m-t-none m-b-none">
-            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-            <li><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-          </ul>
-        </div>
+        <nav aria-label="Page navigation">
+            {{ $vatlieu->links() }}
+        </nav>
       </div>
     </footer>
   </div>

@@ -10,7 +10,7 @@ use Session;
 
 class VatLieuController extends Controller
 {
-    public function add_vatlieu(){        
+    public function add_vatlieu(){
         return view('admin.add_vatlieu');
     }
 
@@ -24,13 +24,19 @@ class VatLieuController extends Controller
         return view('admin/add_vatlieu');
     }
 
-    public function list_vatlieu(){
-        return view('admin.list_vatlieu');
-    }
+    public function getlist_vatlieu(Request $request){
+        $keyword = $request->kw;
+        if($keyword){
+            $all_vatlieu = DB::table('vatlieu')->where('tenVL','like','%'.$request->kw.'%')
+                            ->orWhere('donVi','like','%'.$request->kw.'%')->paginate(5);
 
-    public function getlist_vatlieu(){
-        $all_vatlieu = DB::table('vatlieu')->paginate(5); 
-        return view('admin/list_vatlieu')->with('vatlieu', $all_vatlieu);
+            return view('admin/list_vatlieu')->with('vatlieu', $all_vatlieu);
+        }
+        else{
+            $all_vatlieu = DB::table('vatlieu')->paginate(5);
+
+            return view('admin/list_vatlieu')->with('vatlieu', $all_vatlieu);
+        }
     }
 
     public function edit_vatlieu($idVatLieu){

@@ -99,7 +99,6 @@ Route::post('/save-vlTokcct/{idCT}', [KCCTController::class, 'saveVatLieus']);
 Route::get('/add-vatlieu', [VatLieuController::class, 'add_vatlieu']);
 Route::post('/save-vatlieu', [VatLieuController::class, 'save_vatlieu']);
 
-Route::get('/list-vatlieu', [VatLieuController::class, 'list_vatlieu']);
 Route::get('/list-vatlieu', [VatLieuController::class, 'getlist_vatlieu']);
 
 Route::get('/edit-vatlieu/{idVatLieu}', [VatLieuController::class, 'edit_vatlieu']);
